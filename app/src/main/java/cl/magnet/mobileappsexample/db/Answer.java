@@ -9,7 +9,7 @@ import android.support.annotation.NonNull;
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(foreignKeys = @ForeignKey(entity = Form.class,
-        parentColumns = "questionId",
+        parentColumns = "uid",
         childColumns = "questionId",
         onDelete = CASCADE))
 
@@ -23,8 +23,9 @@ public class Answer {
     @ColumnInfo(name = "text")
     private String text;
 
-    public Answer(int uid, String text) {
+    public Answer(int uid,int questionId, String text) {
         this.uid = uid;
+        this.questionId = questionId;
         this.text = text;
     }
 
@@ -36,19 +37,19 @@ public class Answer {
         this.uid = uid;
     }
 
-    public int getquestionId() {
+    public int getQuestionId() {
         return questionId;
     }
 
-    public void setquestionId(int questionId) {
+    public void setQuestionId(int questionId) {
         this.questionId = questionId;
     }
 
-    public String gettext() {
+    public String getText() {
         return text;
     }
 
-    public void settext(String text) {
+    public void setText(String text) {
         this.text = text;
     }
 }
